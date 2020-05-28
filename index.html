@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubbles</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap"
+      rel="stylesheet"
+    />
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <main class="wrapper">
+      <div class="welcome">
+        <h1 class="title">Let's play with BUBBLES.</h1>
+      </div>
+      <div id="canv-cont">
+        <canvas id="my-canvas"
+          >Your browser does not support the HTML canvas tag.</canvas
+        >
+        <div onclick="toogleCtrl()" id="ctrl-switch" title="Control panel">
+          ...
+        </div>
+      </div>
+      <div class="control">
+        <!-- amount of bubbles -->
+        <div class="control-unit">
+          <label for="amount">Amount of Bubbles:</label>
+          <input
+            class="range"
+            oninput="changeAmount(this.value)"
+            type="range"
+            name="amount"
+            id="amount"
+            min="1"
+            max="3000"
+            value="1"
+          />
+          <p class="out" id="amount-out"></p>
+        </div>
+        <!-- hue range of bubbles -->
+        <div class="control-set">
+          <div class="control-unit">
+            <label for="hue-min">Hue Min:</label>
+            <input
+              class="range"
+              oninput="changeHue(this)"
+              type="range"
+              name="hueMin"
+              id="hue-min"
+              min="0"
+              max="360"
+              value="0"
+            />
+            <p class="out" id="hue-min-out"></p>
+          </div>
+
+          <div class="control-unit">
+            <label for="hue-max">Hue Max:</label>
+            <input
+              class="range"
+              oninput="changeHue(this)"
+              type="range"
+              name="hueMax"
+              id="hue-max"
+              min="0"
+              max="360"
+              value="0"
+            />
+            <p class="out" id="hue-max-out"></p>
+          </div>
+        </div>
+        <!-- radius range of bubbles-->
+        <div class="control-set">
+          <div class="control-unit">
+            <label for="rad-min">Bubble Radius Min:</label>
+            <input
+              class="range"
+              oninput="changeRad(this)"
+              type="range"
+              name="radMin"
+              id="rad-min"
+              min="1"
+              max="160"
+              value="1"
+            />
+            <p class="out" id="rad-min-out"></p>
+          </div>
+
+          <div class="control-unit">
+            <label for="rad-max">Bubble Radius Max:</label>
+            <input
+              class="range"
+              oninput="changeRad(this)"
+              type="range"
+              name="radMax"
+              id="rad-max"
+              min="1"
+              max="160"
+              value="1"
+            />
+            <p class="out" id="rad-max-out"></p>
+          </div>
+        </div>
+        <!-- velocity range of bubbles -->
+        <div class="control-set">
+          <div class="control-unit">
+            <label for="vel-min">Velocity Min:</label>
+            <input
+              class="range"
+              oninput="changeVel(this)"
+              type="range"
+              name="velMin"
+              id="vel-min"
+              step="0.1"
+              min="0"
+              max="30"
+              value="0"
+            />
+            <p class="out" id="vel-min-out"></p>
+          </div>
+
+          <div class="control-unit">
+            <label for="vel-max">Velocity Max:</label>
+            <input
+              class="range"
+              oninput="changeVel(this)"
+              type="range"
+              name="velMax"
+              id="vel-max"
+              step="0.1"
+              min="0"
+              max="30"
+              value="0"
+            />
+            <p class="out" id="vel-max-out"></p>
+          </div>
+        </div>
+        <!-- trail -->
+        <div class="control-unit">
+          <label for="trail">Trail of Bubbles:</label>
+          <input
+            class="range"
+            onchange="changeTrail(this)"
+            type="checkbox"
+            name="trail"
+            id="trail"
+          />
+        </div>
+        <!-- outline -->
+        <div class="control-unit">
+          <label for="stroke">Outline of Bubbles:</label>
+          <input
+            class="range"
+            onchange="changeStroke(this)"
+            type="checkbox"
+            name="stroke"
+            id="stroke"
+          />
+        </div>
+        <!--  -->
+      </div>
+      <div class="buttons">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+      </div>
+    </main>
+    <!-- JavaScript -->
+    <!-- <script src="tests.js"></script> -->
+    <script src="animation.js"></script>
+    <script src="control.js"></script>
+  </body>
+</html>
