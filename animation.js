@@ -1,6 +1,6 @@
 // set the canvas size
-const canvasWidth = window.innerWidth;
-const canvasHeight = window.innerHeight;
+const canvasWidth = window.innerWidth * 0.8;
+const canvasHeight = window.innerHeight * 0.8;
 
 $("#my-canvas").attr("width", canvasWidth);
 $("#my-canvas").attr("height", canvasHeight);
