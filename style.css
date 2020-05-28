@@ -20,7 +20,7 @@ body {
   box-shadow: 0 0 60px 30px rgba(0, 0, 0, 0.1);
   /*  */
   display: grid;
-  gap: 30px;
+  gap: 44px;
 }
 
 /* title */
@@ -48,10 +48,12 @@ body {
 }
 
 #ctrl-switch {
+  display: flex;
+  margin: auto;
   text-align: right;
   font-size: 60px;
   line-height: 60px;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   color: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: -30px;
@@ -65,10 +67,9 @@ body {
 }
 
 /* controls */
-
 .control {
   display: grid;
-  gap: 20px;
+  gap: 30px;
 }
 
 .control-set {
@@ -81,7 +82,7 @@ body {
 .control-unit {
   display: grid;
   grid-template-columns: auto auto auto;
-  gap: 14px;
+  gap: 8px;
   justify-content: start;
 }
 
@@ -95,7 +96,7 @@ body {
 }
 
 .control .out {
-  width: 60px;
+  width: 48px;
   font-family: roboto;
   font-size: 1rem;
   line-height: 1.4rem;
@@ -140,4 +141,34 @@ button:active {
 
 #stop {
   background-color: red;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 90vw;
+    padding: 18px 10px;
+    border-radius: 22px;
+    gap: 32px;
+  }
+
+  .welcome {
+    font-size: 0.8rem;
+    text-shadow: none;
+  }
+
+  #canv-cont {
+    margin-bottom: 30px;
+  }
+
+  #ctrl-switch {
+    bottom: -38px;
+  }
+
+  .control {
+    gap: 40px;
+  }
+  .control-set {
+    grid-template-columns: auto;
+    gap: 4px;
+  }
 }
