@@ -1,6 +1,6 @@
 // set the canvas size
-const canvasWidth = window.innerWidth * 0.8;
-const canvasHeight = window.innerHeight * 0.8;
+const canvasWidth = window.innerWidth;
+const canvasHeight = window.innerHeight;
 
 $("#my-canvas").attr("width", canvasWidth);
 $("#my-canvas").attr("height", canvasHeight);
@@ -29,9 +29,6 @@ function setColor() {
     l: "50%",
   }; // initial color for all balls
 }
-
-$("#start").click(start);
-$("#stop").click(stop);
 
 function start() {
   stop();

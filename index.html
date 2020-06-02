@@ -1,180 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="us">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bubbles</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="jquery-ui.css" />
+    <link rel="stylesheet" href="styles.css" />
     <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-    <main class="wrapper">
-      <div class="welcome">
-        <h1 class="title">Let's play with BUBBLES.</h1>
+    <div id="canvas-container">
+      <div id="btn-ctrl-open" class="icon-btn">
+        <span class="ui-icon ui-icon-gear"></span>
       </div>
-      <div id="canv-cont">
-        <canvas id="my-canvas"
-          >Your browser does not support the HTML canvas tag.</canvas
-        >
-        <div onclick="toogleCtrl()" id="ctrl-switch" title="Control panel">
-          ...
+      <canvas id="my-canvas"
+        >Your browser does not support the HTML canvas tag.</canvas
+      >
+      <!-- CONTROL PANEL -->
+      <div id="controls">
+        <h2 class="title">Control Panel</h2>
+        <div id="btn-ctrl-close" class="icon-btn">
+          <span class="ui-icon ui-icon-close"></span>
         </div>
-      </div>
-      <div class="control">
-        <!-- amount of bubbles -->
-        <div class="control-unit">
-          <label for="amount">Amount of Bubbles:</label>
-          <input
-            class="range"
-            oninput="changeAmount(this.value)"
-            type="range"
-            name="amount"
-            id="amount"
-            min="1"
-            max="3000"
-            value="1"
-          />
-          <p class="out" id="amount-out"></p>
-        </div>
-        <!-- hue range of bubbles -->
-        <div class="control-set">
-          <div class="control-unit">
-            <label for="hue-min">Hue Min:</label>
-            <input
-              class="range"
-              oninput="changeHue(this)"
-              type="range"
-              name="hueMin"
-              id="hue-min"
-              min="0"
-              max="360"
-              value="0"
-            />
-            <p class="out" id="hue-min-out"></p>
-          </div>
+        <!-- Container for the control-groups -->
+        <div class="control-groups">
+          <!-- amount of bubbles -->
+          <fieldset>
+            <legend>Amount of bubbles</legend>
+            <div class="controlgroup-a" id="controlgroup-bubbles">
+              <input class="spinner" id="spinner-bubbles-1" disabled />
+              <div class="slider" id="slider-bubbles"></div>
+            </div>
+          </fieldset>
+          <!-- end of amount of bubbles -->
 
-          <div class="control-unit">
-            <label for="hue-max">Hue Max:</label>
-            <input
-              class="range"
-              oninput="changeHue(this)"
-              type="range"
-              name="hueMax"
-              id="hue-max"
-              min="0"
-              max="360"
-              value="0"
-            />
-            <p class="out" id="hue-max-out"></p>
-          </div>
-        </div>
-        <!-- radius range of bubbles-->
-        <div class="control-set">
-          <div class="control-unit">
-            <label for="rad-min">Bubble Radius Min:</label>
-            <input
-              class="range"
-              oninput="changeRad(this)"
-              type="range"
-              name="radMin"
-              id="rad-min"
-              min="1"
-              max="160"
-              value="1"
-            />
-            <p class="out" id="rad-min-out"></p>
-          </div>
+          <!-- hue range of bubbles -->
+          <fieldset>
+            <legend>Hue range of bubbles</legend>
+            <div class="controlgroup-a" id="controlgroup-hue">
+              <input class="spinner" id="spinner-hue-1" disabled />
+              <div class="slider" id="slider-range-hue"></div>
+              <input class="spinner" id="spinner-hue-2" disabled />
+            </div>
+          </fieldset>
+          <!-- end of hue range of bubbles -->
 
-          <div class="control-unit">
-            <label for="rad-max">Bubble Radius Max:</label>
-            <input
-              class="range"
-              oninput="changeRad(this)"
-              type="range"
-              name="radMax"
-              id="rad-max"
-              min="1"
-              max="160"
-              value="1"
-            />
-            <p class="out" id="rad-max-out"></p>
-          </div>
-        </div>
-        <!-- velocity range of bubbles -->
-        <div class="control-set">
-          <div class="control-unit">
-            <label for="vel-min">Velocity Min:</label>
-            <input
-              class="range"
-              oninput="changeVel(this)"
-              type="range"
-              name="velMin"
-              id="vel-min"
-              step="0.1"
-              min="0"
-              max="30"
-              value="0"
-            />
-            <p class="out" id="vel-min-out"></p>
-          </div>
+          <!-- radius range of bubbles-->
+          <fieldset>
+            <legend>Radius range of bubbles</legend>
+            <div class="controlgroup-a" id="controlgroup-rad">
+              <input class="spinner" id="spinner-rad-1" disabled />
+              <div class="slider" id="slider-range-rad"></div>
+              <input class="spinner" id="spinner-rad-2" disabled />
+            </div>
+          </fieldset>
+          <!-- end of radius range of bubbles-->
 
-          <div class="control-unit">
-            <label for="vel-max">Velocity Max:</label>
-            <input
-              class="range"
-              oninput="changeVel(this)"
-              type="range"
-              name="velMax"
-              id="vel-max"
-              step="0.1"
-              min="0"
-              max="30"
-              value="0"
-            />
-            <p class="out" id="vel-max-out"></p>
-          </div>
+          <!-- velocity range of bubbles -->
+          <fieldset>
+            <legend>Velocity range of bubbles</legend>
+            <div class="controlgroup-a" id="controlgroup-vel">
+              <input class="spinner" id="spinner-vel-1" disabled />
+              <div class="slider" id="slider-range-vel"></div>
+              <input class="spinner" id="spinner-vel-2" disabled />
+            </div>
+          </fieldset>
+          <!-- end of velocity range of bubbles -->
+
+          <!-- Options -->
+          <fieldset>
+            <legend>Options:</legend>
+            <div class="controlgroup-b" id="controlgroup-ops">
+              <!-- trail -->
+              <label for="checkbox-1">Trail</label>
+              <input type="checkbox" name="checkbox-1" id="checkbox-1" />
+              <!-- outline -->
+              <label for="checkbox-2">Outline</label>
+              <input type="checkbox" name="checkbox-2" id="checkbox-2" />
+            </div>
+          </fieldset>
+          <!-- End of Options -->
+
+          <!-- Start Stop Buttons -->
+          <fieldset>
+            <legend>Start or Stop the animation:</legend>
+            <div class="controlgroup-c" id="controlgroup-start-stop">
+              <label for="radio-1">Start</label>
+              <input type="radio" name="radio-1" id="radio-1" />
+              <label for="radio-2">Stop</label>
+              <input type="radio" name="radio-1" id="radio-2" />
+            </div>
+          </fieldset>
+          <!-- End of Start Stop Buttons -->
         </div>
-        <!-- CheckBoxes -->
-        <div class="control-set">
-          <!-- trail -->
-          <div class="control-unit">
-            <label for="trail">Trail of Bubbles:</label>
-            <input
-              class="range"
-              onchange="changeTrail(this)"
-              type="checkbox"
-              name="trail"
-              id="trail"
-            />
-          </div>
-          <!-- outline -->
-          <div class="control-unit">
-            <label for="stroke">Outline of Bubbles:</label>
-            <input
-              class="range"
-              onchange="changeStroke(this)"
-              type="checkbox"
-              name="stroke"
-              id="stroke"
-            />
-          </div>
-        </div>
-        <!--  -->
       </div>
-      <div class="buttons">
-        <button id="start">Start</button>
-        <button id="stop">Stop</button>
-      </div>
-    </main>
+    </div>
     <!-- JavaScript -->
-    <!-- <script src="tests.js"></script> -->
-    <script src="animation.js"></script>
-    <script src="control.js"></script>
+    <script src="JavaScript/jquery-ui.js"></script>
+    <script src="JavaScript/UI-init.js"></script>
+    <script src="JavaScript/animation.js"></script>
+    <script src="JavaScript/control.js"></script>
   </body>
 </html>
